@@ -137,3 +137,54 @@ VALUES ('$rollno', '$name', '$sub1', '$sub2', '$sub3',
         echo "Data not inserted: " . mysqli_error($conn) . "<br>"; 
 } 
 ?> 
+---
+read.php 
+<?php 
+$conn = mysqli_connect("localhost", "root", "", "Person"); 
+if (!$conn) 
+    die("Connection failed"); 
+ 
+$sql = "SELECT * FROM students"; 
+$result = mysqli_query($conn, $sql); 
+ 
+echo "<h3>Student Records</h3>"; 
+if (mysqli_num_rows($result) > 0) { 
+    echo "<table border='1' cellpadding='8' cellspacing='0'> 
+            <tr> 
+            <th>Roll No</th> 
+            <th>Name</th> 
+            <th>Sub1</th> 
+            <th>Sub2</th> 
+            <th>Sub3</th> 
+            <th>Total</th> 
+            <th>Percentage</th> 
+            <th>Action</th> </tr>"; 
+ 
+        while ($row = mysqli_fetch_assoc($result)) { 
+        echo "<tr> 
+            <td>" . $row['rollno'] . "</td> 
+            <td>" . $row['name'] . "</td> 
+            <td>" . $row['sub1'] . "</td> 
+            <td>" . $row['sub2'] . "</td> 
+            <td>" . $row['sub3'] . "</td> 
+            <td>" . $row['total'] . "</td> 
+            <td>" . $row['per'] . "</td> 
+             
+<td> 
+   <form method='POST' action = 'update.php' style='display:inline;'> 
+      <input type='hidden' name='roll' value='" . $row['rollno'] . "'> 
+      <input type='submit' name='edit' value='Update'>  
+   </form> 
+ 
+   <form method='POST' action = 'delete.php' style='display:inline;'> 
+      <input type='hidden' name='roll' value='" . $row['rollno'] . "'> 
+      <input type='submit' name='delete' value='Delete'>  
+   </form> 
+</td> 
+</tr>"; 
+    } 
+    echo "</table>"; 
+}  
+else 
+    echo "No records found"; 
+?> 
