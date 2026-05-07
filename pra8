@@ -1,0 +1,127 @@
+Practical 08 :- To create a PHP program that handles form data submitted 
+by the user and displays the submitted input on the web page.Theory: 
+ 
+<!DOCTYPE html> 
+<html> 
+ 
+<head> 
+    <title>PHP Form Handling Example</title> 
+    <style> 
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 30px; 
+        } 
+ 
+        form { 
+            background-color: #f2f2f2; 
+            padding: 20px; 
+            width: 400px; 
+            border-radius: 8px; 
+        } 
+ 
+        input, 
+        select, 
+        textarea { 
+            width: 100%; 
+            padding: 8px; 
+            margin: 8px 0; 
+        } 
+ 
+        input[type="submit"] { 
+            width: auto; 
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            padding: 10px 20px; 
+        } 
+ 
+        h2 { 
+            color: #333; 
+        } 
+ 
+        .output { 
+            background-color: #e6f7ff; 
+            padding: 15px; 
+            margin-top: 20px; 
+            border-radius: 6px; 
+        } 
+    </style> 
+</head> 
+ 
+<body> 
+    <h2>Student Registration Form</h2> 
+    <form method="post" action=""> 
+        <label>Full Name:</label> 
+        <input type="text" name="fullname" required> 
+        <label>Email:</label> 
+        <input type="email" name="email" required> 
+        <label>Gender:</label> 
+        <input type="radio" name="gender" value="Male"> Male 
+        <input type="radio" name="gender" value="Female"> Female 
+        <input type="radio" name="gender" value="Other"> Other 
+        <label>Course:</label> 
+        <select name="course"> 
+            <option value="BCA">BCA</option> 
+            <option value="BSc">BSc</option> 
+            <option value="BBA">BBA</option> 
+            <option value="MCA">MCA</option> 
+        </select> 
+        <label>Address:</label> 
+        <textarea name="address" rows="4"></textarea> 
+        <input type="submit" name="submit" value="Register"> 
+    </form> 
+    <?php 
+if (isset($_POST['submit'])) { 
+ 
+    // Collect form data 
+    $name = $_POST['fullname']; 
+    $email = $_POST['email']; 
+    $gender = $_POST['gender'] ?? "Not specified"; 
+    $course = $_POST['course']; 
+    $address = $_POST['address']; 
+ 
+    // Display submitted data in table format 
+    echo "<div class='output'>"; 
+    echo "<h2>Submitted Data</h2>"; 
+ 
+    echo "<table border='1' cellpadding='10' cellspacing='0' 
+width='100%'>"; 
+ 
+    echo "<tr>"; 
+    echo "<th>Field</th>"; 
+    echo "<th>Value</th>"; 
+    echo "</tr>"; 
+ 
+    echo "<tr>"; 
+    echo "<td>Full Name</td>"; 
+    echo "<td>" . htmlspecialchars($name) . "</td>"; 
+    echo "</tr>"; 
+ 
+    echo "<tr>"; 
+    echo "<td>Email</td>"; 
+    echo "<td>" . htmlspecialchars($email) . "</td>"; 
+    echo "</tr>"; 
+ 
+    echo "<tr>"; 
+    echo "<td>Gender</td>"; 
+    echo "<td>" . htmlspecialchars($gender) . "</td>"; 
+    echo "</tr>"; 
+ 
+    echo "<tr>"; 
+    echo "<td>Course</td>"; 
+    echo "<td>" . htmlspecialchars($course) . "</td>"; 
+    echo "</tr>"; 
+ 
+    echo "<tr>"; 
+    echo "<td>Address</td>"; 
+    echo "<td>" . nl2br(htmlspecialchars($address)) . "</td>"; 
+    echo "</tr>"; 
+ 
+    echo "</table>"; 
+    echo "</div>"; 
+} 
+?> 
+</body> 
+ 
+</html>
