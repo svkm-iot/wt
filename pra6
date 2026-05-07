@@ -188,3 +188,147 @@ if (mysqli_num_rows($result) > 0) {
 else 
     echo "No records found"; 
 ?> 
+
+
+
+
+Update.php 
+<?php 
+$conn = mysqli_connect("localhost","root","","Person"); 
+ 
+if(!$conn) 
+    die("Connection failed"); 
+ 
+// Default empty values 
+$name = $roll = $sub1 = $sub2 = $sub3 = $total = $percentage = ""; 
+ 
+// -------- FETCH DATA (when Update button clicked from table) -------- 
+if(isset($_POST['edit'])) 
+{ 
+    $roll = $_POST['roll']; 
+ 
+    $res = mysqli_query($conn, "SELECT * FROM students WHERE 
+rollno='$roll'"); 
+    if($row = mysqli_fetch_assoc($res)) 
+    { 
+        $name = $row['name']; 
+        $sub1 = $row['sub1']; 
+        $sub2 = $row['sub2']; 
+        $sub3 = $row['sub3']; 
+        $total = $row['total']; 
+        $percentage = $row['per']; 
+    } 
+} 
+ 
+// -------- UPDATE RECORD -------- 
+if(isset($_POST['update'])) 
+{ 
+    $roll = $_POST['roll']; 
+    $name = $_POST['name']; 
+    $sub1 = $_POST['sub1']; 
+    $sub2 = $_POST['sub2']; 
+    $sub3 = $_POST['sub3']; 
+    $total = $_POST['total']; 
+    $percentage = $_POST['percentage']; 
+ 
+    $sql = "UPDATE students SET  
+            name='$name', 
+            sub1='$sub1', 
+            sub2='$sub2', 
+            sub3='$sub3', 
+            total='$total', 
+            per='$percentage' 
+            WHERE rollno='$roll'"; 
+ 
+    if(mysqli_query($conn,$sql)) 
+        echo "Record updated successfully"; 
+    else 
+        echo "Error: ".mysqli_error($conn); 
+} 
+?> 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Update Student</title> 
+ 
+    <style> 
+        .container { 
+            width: 350px; 
+            margin: 50px; 
+            padding: 20px; 
+            border-radius: 10px; 
+        } 
+ 
+        input { 
+            width: 100%; 
+            padding: 8px; 
+            margin: 6px 0 14px; 
+        } 
+    </style> 
+</head> 
+ 
+<body> 
+ 
+<div class="container"> 
+    <h2>Update Student</h2> 
+ 
+    <form method="POST"> 
+        <label>Name:</label> 
+        <input type="text" name="name" value="<?php echo $name; ?>"> 
+ 
+        <label>Roll No:</label> 
+        <input type="text" name="roll" value="<?php echo $roll; ?>" 
+readonly> 
+ 
+        <label>Subject 1:</label> 
+        <input type="number" name="sub1" value="<?php echo $sub1; ?>"> 
+ 
+        <label>Subject 2:</label> 
+        <input type="number" name="sub2" value="<?php echo $sub2; ?>"> 
+ 
+        <label>Subject 3:</label> 
+        <input type="number" name="sub3" value="<?php echo $sub3; ?>"> 
+ 
+        <label>Total:</label> 
+        <input type="number" name="total" value="<?php echo $total; ?>"> 
+ 
+        <label>Percentage:</label> 
+        <input type="text" name="percentage" value="<?php echo 
+$percentage; ?>"> 
+ 
+        <input type="submit" name="update" value="Update"> 
+    </form> 
+</div> 
+ 
+</body> 
+</html> 
+  
+Delete.php 
+<?php 
+$conn = mysqli_connect("localhost","root","","Person"); 
+ 
+if(!$conn) 
+    die("Connection failed"); 
+ 
+if(isset($_POST['delete'])) 
+{ 
+    $roll = $_POST['roll']; 
+ 
+    $sql = "DELETE FROM students WHERE rollno='$roll'"; 
+    $result = mysqli_query($conn, $sql); 
+ 
+    if($result) 
+    { 
+        echo "Record deleted successfully<br>"; 
+    } 
+    else 
+    { 
+        echo "Delete failed: " . mysqli_error($conn); 
+    } 
+} 
+else 
+{ 
+    echo "Invalid request"; 
+} 
+?> 
