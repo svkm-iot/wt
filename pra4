@@ -1,0 +1,49 @@
+Practical 04 : Develop a web page with navigation links and embedded video 
+Abc.html 
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Fruits List</title> 
+</head> 
+<body> 
+<h2>List of Fruits</h2> 
+<ul> 
+<li><a href="apple.html">Apple</a></li> 
+<li><a href="banana.html">Banana</a></li> 
+<li><a href="mango.html">Mango</a></li> 
+<li><a href="grapes.html">Grapes</a></li> 
+<li><a href="pineapple.html">Pineapple</a></li> 
+</ul> 
+</body> 
+</html> 
+pineapple.html 
+<!DOCTYPE html> 
+<html> 
+<head><title>Pineapple Information</title></head> 
+<body> 
+    <h2>Pineapple</h2> 
+    <table border="2"> 
+    <tr> 
+        <td><img src="pineapple.jpg" width="200" height="200"></td> 
+        <td> 
+            <p> 
+                Pineapple is a tropical fruit known for its sweet and 
+tangy taste. 
+                It is rich in Vitamin C and helps in digestion. 
+                It is widely used in juices, desserts, and salads. 
+            </p> 
+        </td> 
+    </tr> 
+    <tr> 
+        <td colspan="2" align="center"> 
+            <video width="300" height="200" controls> 
+                <source src="pineapple.mp4" type="video/mp4"> 
+                Your browser does not support the video tag. 
+            </video> 
+        </td> 
+    </tr> 
+    </table> 
+<br> 
+<a href="4.html">Back to Fruits List</a> 
+</body> 
+</html>
