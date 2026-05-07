@@ -1,0 +1,97 @@
+Practical 09:- To develop a login form using HTML and validate the entered 
+credentials using PHP. 
+<?php 
+ 
+$conn = mysqli_connect("localhost","root","","person"); 
+ 
+if(!$conn) 
+{ 
+    die("Connection failed"); 
+} 
+ 
+$message = ""; 
+ 
+if(isset($_POST['login'])) 
+{ 
+    $username = $_POST['username']; 
+    $password = $_POST['password']; 
+ 
+    $sql = "SELECT * FROM user WHERE username='$username' AND 
+pass='$password'"; 
+ 
+    $result = mysqli_query($conn,$sql); 
+ 
+    if(mysqli_num_rows($result) > 0) 
+    { 
+        $message = "Login Successful"; 
+    } 
+    else 
+    { 
+        $message = "Login Failed"; 
+    } 
+} 
+ 
+?> 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Login</title> 
+ 
+    <style> 
+ 
+        body{ 
+            font-family: Arial; 
+            display:flex; 
+            justify-content:center; 
+            align-items:center; 
+            height:100vh; 
+        } 
+ 
+        .box{ 
+            width:300px; 
+        } 
+ 
+        input{ 
+            width:100%; 
+            padding:8px; 
+            margin:8px 0; 
+        } 
+ 
+        .btn{ 
+            width:100%; 
+            padding:8px; 
+        } 
+ 
+        p{ 
+            text-align:center; 
+        } 
+ 
+    </style> 
+ 
+</head> 
+ 
+<body> 
+ 
+<div class="box"> 
+ 
+    <h2>Login</h2> 
+ 
+    <form method="POST"> 
+ 
+        <input type="text" name="username" placeholder="Username" 
+required> 
+ 
+        <input type="password" name="password" placeholder="Password" 
+required> 
+ 
+        <input type="submit" name="login" value="Login" class="btn"> 
+ 
+    </form> 
+ 
+    <p><?php echo $message; ?></p> 
+ 
+</div> 
+ 
+</body> 
+</html>
