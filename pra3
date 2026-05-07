@@ -1,0 +1,76 @@
+Practical 03 :- To create a web page using HTML tables to display a class timetable 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Time Table</title> 
+</head> 
+<body> 
+<center> 
+<table border="2" cellspacing="0" cellpadding="8"> 
+    <tr><th>Time</th> 
+        <th>Lec No.</th> 
+        <th>Monday</th> 
+        <th>Tuesday</th> 
+        <th>Wednesday</th> 
+        <th>Thursday</th> 
+        <th>Friday</th> 
+        <th>Saturday</th></tr> 
+    <tr><td>10.00 AM to 11.00 AM</td> 
+        <td>1</td> 
+        <td>DM</td> 
+        <td>COA</td> 
+        <td>AOA</td> 
+        <td>IE</td> 
+        <td>MDM-2</td> 
+        <td rowspan="3">MERC</td></tr> 
+    <tr><td>11.00 AM to 12.00 PM</td> 
+        <td>2</td> 
+        <td>OE-2</td> 
+        <td>DM</td> 
+        <td>DM</td> 
+        <td>WT</td> 
+        <td>UHV-2</td></tr> 
+    <tr><td>12.00 PM to 01.00 PM</td> 
+        <td>3</td> 
+        <td>MDM-2</td> 
+        <td>AOA</td> 
+        <td>COA</td> 
+        <td>COA</td> 
+        <td>IE</td></tr> 
+    <tr><td>1.00 PM to 1.45 PM</td> 
+        <td colspan="7" align="center">LUNCH BREAK</td></tr> 
+    <tr><td>1.45 PM to 2.45 PM</td> 
+        <td>4</td> 
+        <td>AOA</td> 
+        <td>OE-2</td> 
+        <td>LBRBA</td> 
+        <td>UHV-2</td> 
+        <td>COA</td> 
+        <td>Indoor Sports</td></tr> 
+    <tr><td>2.45 PM to 3.00 PM</td> 
+        <td colspan="7" align="center">SHORT BREAK</td></tr> 
+    <tr><td>3.00 PM to 4.00 PM</td> 
+        <td>5</td> 
+        <td rowspan="2"> 
+            S1 : AOA Lab <br> 
+            S2 : WT Lab <br> 
+            S3 : MOOC </td> 
+        <td rowspan="2"> 
+            S1 : WT Lab <br> 
+            S2 : MOOC <br> 
+            S3 : AOA Lab </td> 
+        <td rowspan="2"> 
+            S1 : MOOC <br> 
+            S2 : AOA Lab <br> 
+            S3 : WT Lab </td> 
+        <td>DM</td> 
+        <td>AOA</td> 
+        <td rowspan="2">SPORTS / YOGA</td></tr> 
+    <tr><td>4.00 PM to 5.00 PM</td> 
+        <td>6</td> 
+        <td>Printing Slot</td> 
+        <td>WT</td></tr> 
+</table> 
+</center> 
+</body> 
+</html>
